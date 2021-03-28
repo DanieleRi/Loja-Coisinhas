@@ -1,0 +1,424 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+
+
+int main()
+{
+  int  j=0, i=0, t_lote,opc=0,opc2=0, ano_f[100], lote[100], dia_compra[100];   //variável de alteração de itens, variavel de itens, total de itens, opção, opção 2, ano de fabricação, lote, dia da compra
+  float naf[100][100], valor[100], valor_u[100], valor_t[100];                                          // nota fiscal, valor do lote, valor unitário, valor total
+  char pg[100][100],itens[100][100],modelo[100][100],cor[100][100], fabricante[100][100], online[100][100]; // pagamento,itens, modelo, cor, fabricante, online (comprado em loja fisica ou online)
+
+  setlocale(LC_ALL,"Portuguese");
+
+  printf("\n\n\n\n================================================================================");
+  printf("\n\n\n\n\t\t\t   BEM VINDO A LOJA COISINHAS\n\n\t\t\t");
+  printf("\n\t\t\t\t@lojacoisinhas\t\t\t\t");
+  printf("\n\n\n================================================================================\n\n\n\n\n\n\n");
+
+  system("color 3F");
+  system("pause");
+  system("cls");
+
+  do {
+
+  system("color F3");
+
+  printf("\n\n\n\n================================================================================");
+  printf("\t\t\t\t      MENU\t\t\t\t");
+  printf("\n\n\n\n\t\t\t       Escolha uma opção \t\t\t\t\t\t\t\t\t");
+  printf("\n\t\t\t   (1) SISTEMA DE CADASTRO \t\t\t\t\t\t\t\t\t");
+  printf("\n\t\t\t   (2) CONSULTA            \t\t\t\t\t\t\t\t\t");
+  printf("\n\t\t\t   (3) ALTERAÇÃO DE ELEMENTOS\t\t\t\t\t\t\t\t");
+  printf("\n\t\t\t   (0) SAIR DO SISTEMA\t\t\t\t\t\t\t\t");
+  printf("\n\n\n\n================================================================================");
+  scanf("%d",&opc);
+
+  system("cls");
+
+  if(opc==1)    //colocar o contador que dê a opção de cadastrar outro item ou sair da tela para voltar ao menu
+  {
+
+      system("color 3F");
+
+      printf("\n================================================================================");
+      printf("\t\t\tBEM VINDO AO SISTEMA DE CADASTRO\t\t\t");
+      printf("================================================================================\n\n");
+
+
+      printf("\nDIGITE O NOME DO ITEM: ");
+      fflush(stdin);
+      gets(itens[i]);
+
+      printf("\nDIGITE O MODELO DO ITEM: ");
+      fflush(stdin);
+      gets(modelo[i]);
+
+      printf("\nDIGITE O FABRICANTE: ");
+      fflush(stdin);
+      gets(fabricante[i]);
+
+      printf("\nDIGITE O ANO DE FABRICAÇÃO: ");
+      fflush(stdin);
+      scanf("%d", &ano_f[i]);
+
+
+      printf("\nDIGITE O LOTE: ");
+      fflush(stdin);
+      scanf("%d", &lote[i]);
+
+      printf("\nDIGITE O DIA DA COMPRA DO LOTE (digite apenas números): ");
+      fflush(stdin);
+      scanf("%d", &dia_compra[i]);
+
+      printf("\nDIGITE A COR: ");
+      fflush(stdin);
+      gets(cor[i]);
+
+      printf("\nDIGITE A NOTA FISCAL: ");
+      fflush(stdin);
+      scanf("%f", &naf[i]);
+
+      printf("\nPRODUTO COMPRADO NA LOJA FÍSICA OU ONLINE?: ");
+      fflush(stdin);
+      gets(online[i]);
+
+      printf("\nFORMA DE PAGAMENTO (boleto ou cartão): ");
+      fflush(stdin);
+      gets(pg[i]);
+
+      printf("\nDIGITE O VALOR DO LOTE: ");
+      fflush(stdin);
+      scanf("%f", &valor[i]);
+
+      printf("\nDIGITE O VALOR UNITÁRIOO: ");
+      fflush(stdin);
+      scanf("%f", &valor_u[i]);
+
+      printf("\nDIGITE O TOTAL DE ITENS NO LOTE: ");
+      fflush(stdin);
+      scanf("%d", &t_lote);
+
+      valor_t[i] = valor[i]+valor_u[i]*t_lote;
+
+      printf("\nVALOR TOTAL: %.2f",valor_t[i]);
+
+
+      printf("\n\n================================================================================");
+      printf("\t\t\tPRODUTO CADASTRADO COM SUCESSO!\t\t\t        ");
+      printf("================================================================================\n");
+
+      system("pause");
+      system("cls");
+  }
+
+
+
+       else if(opc==2)
+      {
+      system("color 3F");
+
+      printf("\n================================================================================");
+      printf("\t\t\t BEM VINDO AO SISTEMA DE CONSULTA\t\t\t");
+      printf("================================================================================\n\n");
+
+      printf("INFORME O NÚMERO DA NOTA FISCAL: ");
+      scanf("%f", &naf[i]);
+
+      for(i=0;i==naf[i];i++)
+
+           printf("RESULTADO DA BUSCA POR ITENS");
+
+           printf("\nNOME: %s\n",itens[i]);
+
+           printf("\nMODELO: %s\n",modelo[i]);
+
+           printf("\nFABRICANTE: %s\n",fabricante[i]);
+
+           printf("\nANO DE FABRICACAO: %d\n",ano_f[i]);
+
+           printf("\nLOTE: %d\n",lote[i]);
+
+           printf("\nCOR: %s\n",cor[i]);
+
+           printf("\nDIA DA COMPRA: %d\n",dia_compra[i]);
+
+           printf("\nLOJA FISICA OU ONLINE?: %s\n",online[i]);
+
+           printf("\nFORMA DE PAGAMENTO: %s\n",pg[i]);
+
+           printf("\nVALOR DO LOTE: %.2f\n",valor[i]);      //alterar o valor do lote implica em alterar também o valor unitário
+
+           printf("\nVALOR UNITÁRIO: %.2f\n",valor_u[i]);
+
+           printf("\nTOTAL DE ITENS: %d\n",t_lote);
+
+                    valor_t[i] = valor[i] + valor_u[i]*t_lote;
+
+           printf("\nVALOR TOTAL: %.2f\n\n",valor_t[i]);
+
+
+      system("pause");
+      system("cls");
+
+      }
+
+
+      else if(opc==3)
+      {
+              system("color 3F");
+              printf("\n================================================================================");
+              printf("\t\t\t BEM VINDO AO SISTEMA DE ALTERAÇÃO\t\t\t");
+              printf("================================================================================\n\n");
+
+              printf("\nINFORME O NUMERO DA NOTA FISCAL DO PRODUTO A SER ALTERADO: ");
+
+              scanf("%f", &naf[i]);
+
+              system("cls");
+
+              system("color 3F");
+
+              printf("\n\n================================================================================");
+
+              printf("\t\t\t     MENU DE ALTERAÇÃO \t\t\t\t\t\t\t\n");
+              printf("\t\t     Escolha a opção que deseja alterar \t\t\t\t\t\t\t\t\t\n");
+
+              printf("\n\t\t\t   (1) NOME DO ITEM\t\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (2) MODELO DO ITEM           \t\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (3) FABRICANTE\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (4) ANO DE FABRICACAO\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (5) LOTE\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (6) COR DO ITEM\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (7) VALOR DO LOTE\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (8) VALOR UNITÁRIO\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (9) TOTAL DE ITENS\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (10) DIA DA COMPRA DO LOTE\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (11)LOJA ONLINE OU FISICA\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (12)FORMA DE PAGAMENTO\t\t\t\t\t\t\t\t");
+
+              printf("\n\t\t\t   (0) VOLTAR AO MENU INICIAL\t\t\t\t\t\t\t\t");
+
+              printf("\n\n================================================================================");
+
+              scanf("%d",&opc2);
+
+
+      if(opc2==0)
+      {
+              printf("SAINDO DO SISTEMA");
+              system("cls");
+              system("pause");
+      }
+
+
+             system("cls");
+
+            switch(opc2)
+            {
+            case 1:
+
+                printf("\nDIGITE O NOVO NOME DO ITEM: ");
+                scanf("%s",&itens[j]);
+
+                fflush(stdin);
+
+                strcpy(itens[i],itens[j]);
+                printf(" \n\nO NOVO NOME: %s. \n\n ",itens[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 2:
+
+                printf("\nDIGITE O NOVO MODELO DO ITEM: ");
+                scanf("%s",&modelo[j]);
+
+                fflush(stdin);
+
+                strcpy(modelo[i],modelo[j]);
+                printf(" \n\nO NOVO MODELO: %s. \n\n ",modelo[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 3:
+
+                printf("\nDIGITE O NOVO FABRICANTE DO ITEM: ");
+                scanf("%s",&fabricante[j]);
+
+                fflush(stdin);
+
+                strcpy(fabricante[i],fabricante[j]);
+                printf(" \n\nO NOVO FABRICANTE: %s. \n\n ",fabricante[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 4:
+
+                printf("\nDIGITE O NOVO ANO DE FABRICACAO DO ITEM: ");
+                scanf("%d",&ano_f[j]);
+
+                fflush(stdin);
+
+                ano_f[i]==ano_f[j];
+                printf(" \n\nO NOVO ANO DE FABRICACAO: %d. \n\n ",ano_f[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 5:
+
+                printf("\nDIGITE O NOVO LOTE DO ITEM: ");
+                scanf("%d",&lote[j]);
+
+                fflush(stdin);
+
+                lote[i]==lote[j];
+                printf(" \n\nO NOVO LOTE: %d. \n\n ",lote[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 6:
+
+                printf("\nDIGITE A NOVA COR DO ITEM: ");
+                scanf("%s",&cor[j]);
+
+                fflush(stdin);
+
+                strcpy(cor[i],cor[j]);
+                printf(" \n\nA NOVA COR: %s. \n\n ",cor[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 7:
+
+                printf("\nDIGITE O NOVO VALOR DO LOTE: ");
+                scanf("%f",&valor[j]);
+
+                fflush(stdin);
+
+                valor[i]==valor[j];
+                printf(" \n\nO NOVO VALOR: %f. \n\n ",valor[i]);
+
+                system("pause");
+                system("cls");
+
+                case 8:
+
+                printf("\nDIGITE O NOVO VALOR UNITÁRIO: ");
+                scanf("%f",&valor_u[j]);
+
+                fflush(stdin);
+
+                valor[i]==valor_u[j];
+                printf(" \n\nO NOVO VALOR: %f. \n\n ",valor_u[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 9:
+
+                printf("\nDIGITE O NOVO TOTAL DE ITENS: ");
+                scanf("%d",&t_lote);
+
+                fflush(stdin);
+
+                t_lote==t_lote;
+                printf(" \n\nO NOVO TOTAL DE ITENS: %d. \n\n ",t_lote);
+
+                system("pause");
+                system("cls");
+
+                valor_t[i] = valor[i] + valor_u[i]*t_lote;
+
+                break;
+
+                case 10:
+
+                printf("\nDIGITE O NOVO DIA DA COMPRA (digite apenas números) : ");
+                scanf("%d",&dia_compra[j]);
+
+                fflush(stdin);
+
+                dia_compra[i]==dia_compra[j];
+                printf(" \n\nO DIA DA COMPRA DO LOTE: %d. \n\n ",dia_compra[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 11:
+
+                printf("\nDIGITE O NOVO TIPO DA COMPRA \n(online ou fisica): ");
+                scanf("%s",&online[j]);
+
+                fflush(stdin);
+
+                strcpy(online[i],online[j]);
+                printf(" \n\nO NOVO TIPO: %s. \n\n ",online[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+
+                case 12:
+
+                printf("\nDIGITE A NOVA FORMA DE PAGAMENTO \n(boleto ou cartao): ");
+                scanf("%s",&pg[j]);
+
+                fflush(stdin);
+
+                strcpy(pg[i],pg[j]);
+                printf(" \n\nO NOVO TIPO DE PAGAMENTO: %s. \n\n ",pg[i]);
+
+                system("pause");
+                system("cls");
+
+                break;
+          }
+
+        }
+
+      }
+       while(opc!=0);
+
+       system("color F3");
+
+       printf("\n\n\n\n\n\n================================================================================");
+       printf("\n\n\n\n\t\t\t  OBRIGADO POR USAR O PROGRAMA!\n\n\t\t\t\t");
+       printf("\n\n\n================================================================================\n\n\n\n");
+
+return 0;
+}
